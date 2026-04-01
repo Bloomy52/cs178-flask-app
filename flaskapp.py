@@ -34,8 +34,6 @@ def index():
 
 
 
-
-
 """
 
 @app.route('/log-in-user', methods=['GET', 'POST'])
