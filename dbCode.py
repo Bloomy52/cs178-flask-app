@@ -23,7 +23,7 @@ def execute_query(query, args=()):
     cur.close()
     return rows
 
-def get_list_of_dictionaries():
+def get_list_of_top10countries():
     """
     Select the top 10 countries by population from country table.
     displays on the home screen
