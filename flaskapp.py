@@ -28,7 +28,7 @@ def display_html(rows):
 
 @app.route('/')
 def index():
-    countries = get_list_of_dictionaries()
+    countries = get_list_of_top10countries()
     return render_template('index.html', results=countries)
 
 
