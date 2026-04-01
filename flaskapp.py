@@ -6,10 +6,54 @@ from flask import Flask
 from flask import render_template
 from flask import Flask, render_template, request, redirect, url_for, flash
 from dbCode import *
+from flask import session
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key' # this is an artifact for using flash displays; 
                                    # it is required, but you can leave this alone
+
+def display_html(rows):
+    """
+    Converts query result rows into a simple HTML table string.
+    Flask routes can return this directly as a response.
+    """
+    html = "<table border='1'>"
+    for row in rows:
+        html += "<tr>"
+        for col in row:
+            html += f"<td>{col}</td>"
+        html += "</tr>"
+    html += "</table>"
+    return html
+
+@app.route('/')
+def index():
+    countries = get_list_of_dictionaries()
+    return render_template('index.html', results=countries)
+
+
+
+
+
+
+"""
+
+@app.route('/log-in-user', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        name = request.form['name']
+        session['username'] = name   # store in session
+        return redirect(url_for('home'))
+    return render_template('login.html')
+
+@app.route('/display-user-stats')
+def user_stats():
+    key = {"Name": session['username']}  # retrieve from session
+    response = table.get_item(Key=key)
+    ...
+
+
+
 
 @app.route('/')
 def home():
@@ -59,6 +103,7 @@ def display_users():
     users_list = (('John','Doe','Comedy'),('Jane', 'Doe','Drama'))
     return render_template('display_users.html', users = users_list)
 
+"""
 
 # these two lines of code should always be the last in the file
 if __name__ == '__main__':
