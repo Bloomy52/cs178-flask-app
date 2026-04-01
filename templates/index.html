@@ -12,7 +12,7 @@
         {% for country in results %}
             <li class="list-group-item">
                 <strong>{{ country.Name }}</strong><br>
-                Population: {{ "{:,}".format(country.Population) }}<br>
+                Population: {{ "{:,}".format(country.Population) }} people<br>
             </li>
         {% endfor %}
     </ul>
