@@ -136,3 +136,11 @@ The JOIN query used in this project: <!-- describe it in plain English -->
 ## AI Assistance
 
 <!-- List any AI tools you used (e.g., ChatGPT) and briefly describe what you used them for. Per course policy, AI use is allowed but must be cited in code comments and noted here. -->
+(Links to chats will be cited by a 'citation' in the form of a `(#)` in the Markdown file).
+I Used GitHub Copilot to help me write the code for the looping portion of the HTML code for `index.html` (1). 
+
+
+#### AI Chat Links:
+*Note: GitHub Copilot chats may expire after a certain period (I think 30 days) of which I cannot control. If the chat is lost, I will not be able to recover it.
+(1) https://github.com/copilot/share/02410022-4a04-8cc1-b141-6e4ba03861d3
+(2)
