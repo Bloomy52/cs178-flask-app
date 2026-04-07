@@ -27,8 +27,8 @@ def display_html(rows):
     return html
 
 @app.route('/')
-def index():
-    countries = get_list_of_top10countries()
+def top_countries():
+    countries = get_list_of_top10python()
     return render_template('index.html', results=countries)
 
 

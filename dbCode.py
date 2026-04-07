@@ -23,12 +23,16 @@ def execute_query(query, args=()):
     cur.close()
     return rows
 
-def get_list_of_top10countries():
+def get_list_of_top10python():
     """
-    Select the top 10 countries by population from country table.
+    Select the top 10 countries that have Python as their most popular language.
     displays on the home screen
     """
-    query = "SELECT Name, Population FROM country ORDER BY Population DESC LIMIT 10"
+    query = ("SELECT name, country.iso2_code, languages.iso2_code, languages.language, language.num_pushers "
+             "FROM country, languages "
+             "JOIN languages ON country.iso2_code = languages.iso2_code "
+             "WHERE languages.language = 'Python' "
+             "ORDER BY DESC LIMIT 10")
     return execute_query(query)
 
 
