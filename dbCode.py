@@ -32,7 +32,7 @@ def get_list_of_top10python():
              "FROM country, languages "
              "JOIN languages ON country.iso2_code = languages.iso2_code "
              "WHERE languages.language = 'Python' "
-             "ORDER BY DESC LIMIT 10")
+             "ORDER BY DESC LIMIT 10;")
     return execute_query(query)
 
 
