@@ -28,7 +28,7 @@ def get_list_of_top10python():
     Select the top 10 countries that have Python as their most popular language.
     displays on the home screen
     """
-    query = ("""SELECT country.name, country.iso2_code, languages.iso2_code, languages.language, language.num_pushers
+    query = ("""SELECT country.name, country.iso2_code, languages.iso2_code, languages.language, languages.num_pushers
                 FROM country
                 JOIN languages ON country.iso2_code = languages.iso2_code
                 WHERE languages.language = 'Python' 
