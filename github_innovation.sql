@@ -1,3 +1,10 @@
+-- Create the github_innovation database
+CREATE DATABASE github_innovation;
+
+-- Use the github_innovation database
+USE github_innovation;
+
+
 -- Create the country table
 CREATE TABLE IF NOT EXISTS country (
     iso2_code CHAR(2) PRIMARY KEY,
