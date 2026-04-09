@@ -64,10 +64,10 @@ def add_user_to_database(username, name):
         response = table.get_item(Key={"username": username})
         item = response.get("Item")
         if item:
-            flash('User Already Exists', 'warning')
+            flash('User Already Exists', 'error')
             return
     except Exception as e:
-        flash('Error Adding User', 'warning')
+        flash('Error Adding User', 'error')
         return
 
     table.put_item(
@@ -84,10 +84,10 @@ def delete_user_from_database(username):
         response = table.get_item(Key={"username": username})
         item = response.get("Item")
         if not item:
-            flash('Error Deleting User', 'warning')
+            flash('Error Deleting User', 'error')
             return
     except Exception as e:
-        flash('Error Deleting User', 'warning')
+        flash('Error Deleting User', 'error')
         return
 
     table.delete_item(
@@ -102,14 +102,15 @@ def update_fav_lang(username, lang):
         response = table.get_item(Key={"username": username})
         item = response.get("Item")
         if not item:
-            flash('Error Updating User', 'warning')
+            flash('Error Updating User', 'error')
             return
     except Exception as e:
-        flash('Error Updating User', 'warning')
+        flash('Error Updating User', 'error')
         return
 
     table.update_item(
         Key={'username': username},
         UpdateExpression='SET fav_lang = :fav_lang',
+        ExpressionAttributeValues={':fav_lang': lang}
     )
     flash('User Updated', 'success')
