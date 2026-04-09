@@ -13,17 +13,9 @@ dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
 table = dynamodb.Table('UserCodeLangs')
 
 
-
 app = Flask(__name__)
 app.secret_key = 'your_secret_key' # this is an artifact for using flash displays; 
                                    # it is required, but you can leave this alone
-
-@app.route('/log-in-user', methods=['GET', 'POST'])
-
-@app.route('/display-user-stats')
-def user_stats():
-    key = {"Name": session['username']}  # retrieve from session
-    response = table.get_item(Key=key)
 
 
 @app.route('/')
@@ -47,6 +39,7 @@ def add_user():
         # Render the form page if the request method is GET
         return render_template('add_user.html')
 
+
 @app.route('/delete-user',methods=['GET', 'POST'])
 def delete_user():
     if request.method == 'POST':
@@ -63,7 +56,8 @@ def delete_user():
         # Render the form page if the request method is GET
         return render_template('delete_user.html')
 
-@app.route('update-user')
+
+@app.route('/update-user')
 def update_user():
     if request.method == 'POST':
         username = request.form['username']
