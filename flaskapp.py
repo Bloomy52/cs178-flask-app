@@ -83,7 +83,7 @@ def read_user():
     if request.method =='POST':
         username = request.form.get('username')
         top_country = get_top_country(username)
-        return top_country
+        return display_html(top_country)
 
     else:
         return render_template('find_country.html')
