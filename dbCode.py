@@ -50,7 +50,7 @@ def get_top_country(username):
     item = response.get("Item")
     fav_lang = item["fav_lang"]
 
-    query = ("""SELECT country.name, country.iso2_code, languages.iso2_code, languages.language, languages.num_pushers
+    query = ("""SELECT country.name
                 FROM country
                 JOIN languages ON country.iso2_code = languages.iso2_code
                 WHERE languages.language = %s 
