@@ -69,10 +69,23 @@ def get_languages():
                 ORDER BY language;""")
     return execute_query(query)
 
-def get_users():
-    response = table.get_item(Key={"username": ""})
+def get_fav_lang(username):
+    try:
+        response = table.get_item(Key={"username": username})
+        item = response.get("Item")
+        if not item:
+            flash('Error Updating User', 'error')
+            return None
+    except Exception as e:
+        flash('Error Updating User', 'error')
+        return None
+
+    response = table.get_item(Key={"username": username})
     item = response.get("Item")
-    return item
+    fav_lang = item["fav_lang"]
+    return fav_lang
+
+
 
 def add_user_to_database(username, name):
     try:
