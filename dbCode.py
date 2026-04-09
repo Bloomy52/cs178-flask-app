@@ -33,7 +33,7 @@ def execute_query(query, args=()):
 def get_top_country(username):
     """
     Select the top country based on the user's favorite language.
-    displays on the read-user.html screen.
+    displays on the find_country.html screen.
     """
 
     try:
