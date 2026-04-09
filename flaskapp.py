@@ -57,7 +57,7 @@ def delete_user():
         return render_template('delete_user.html')
 
 
-@app.route('/update-user')
+@app.route('/update-user', methods=['GET', 'POST'])
 def update_user():
     if request.method == 'POST':
         username = request.form['username']
@@ -76,6 +76,17 @@ def display_users():
     response = table.scan()
     users_list = response.get('Items', [])
     return render_template('display_users.html', users = users_list)
+
+
+@app.route('/find-country', methods=['GET', 'POST'])
+def read_user():
+    if request.method =='POST':
+        username = request.form.get('username')
+        top_country = get_top_country(username)
+        return top_country
+
+    else:
+        return render_template('find_country.html', top_country=top_country)
 
 
 def display_html(rows):
