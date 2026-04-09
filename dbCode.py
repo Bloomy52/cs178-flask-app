@@ -5,6 +5,7 @@
 import pymysql
 import creds
 import boto3
+from flask import flash
 
 dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
 table = dynamodb.Table('UserCodeLangs')
@@ -53,3 +54,62 @@ def get_languages():
                 ORDER BY language;""")
     return execute_query(query)
 
+def get_users():
+    response = table.get_item(Key={"Username": ""})
+    item = response.get("Item")
+    return item
+
+def add_user_to_database(username, name):
+    try:
+        response = table.get_item(Key={"Username": username})
+        item = response.get("Item")
+        if item:
+            flash('User Already Exists', 'warning')
+            return
+    except Exception as e:
+        flash('Error Adding User', 'warning')
+        return
+
+    table.put_item(
+        Item={
+            'Name': name,
+            'Username': username
+        }
+    )
+    flash('User Added Successfully!', 'success')
+
+
+def delete_user_from_database(username):
+    try:
+        response = table.get_item(Key={"Username": username})
+        item = response.get("Item")
+        if not item:
+            flash('Error Deleting User', 'warning')
+            return
+    except Exception as e:
+        flash('Error Deleting User', 'warning')
+        return
+
+    table.delete_item(
+        Key={'Username': username}
+    )
+    flash('User deleted successfully', 'success')
+
+
+def update_fav_lang(username, lang):
+
+    try:
+        response = table.get_item(Key={"Username": username})
+        item = response.get("Item")
+        if not item:
+            flash('Error Updating User', 'warning')
+            return
+    except Exception as e:
+        flash('Error Updating User', 'warning')
+        return
+
+    table.update_item(
+        Key={'Username': username},
+        UpdateExpression='SET fav_lang = :fav_lang',
+    )
+    flash('User Updated', 'success')
