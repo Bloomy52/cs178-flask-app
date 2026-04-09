@@ -30,17 +30,32 @@ def execute_query(query, args=()):
     cur.close()
     return rows
 
-def get_list_of_top10python():
+def get_top_country(username):
     """
-    Select the top 10 countries that have Python as their most popular language.
-    displays on the home screen
+    Select the top country based on the user's favorite language.
+    displays on the read-user.html screen.
     """
+
+    try:
+        response = table.get_item(Key={"username": username})
+        item = response.get("Item")
+        if not item:
+            flash('Error Getting User', 'error')
+            return None
+    except Exception as e:
+        flash('Error Getting Top Country', 'error')
+        return None
+
+    response = table.get_item(Key={"username": username})
+    item = response.get("Item")
+    fav_lang = item["fav_lang"]
+
     query = ("""SELECT country.name, country.iso2_code, languages.iso2_code, languages.language, languages.num_pushers
                 FROM country
                 JOIN languages ON country.iso2_code = languages.iso2_code
-                WHERE languages.language = 'Python' 
+                WHERE languages.language = fav_lang 
                 ORDER BY languages.num_pushers DESC 
-                LIMIT 10;""")
+                LIMIT 1;""")
     return execute_query(query)
 
 
