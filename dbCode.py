@@ -55,13 +55,13 @@ def get_languages():
     return execute_query(query)
 
 def get_users():
-    response = table.get_item(Key={"Username": ""})
+    response = table.get_item(Key={"username": ""})
     item = response.get("Item")
     return item
 
 def add_user_to_database(username, name):
     try:
-        response = table.get_item(Key={"Username": username})
+        response = table.get_item(Key={"username": username})
         item = response.get("Item")
         if item:
             flash('User Already Exists', 'warning')
@@ -72,8 +72,8 @@ def add_user_to_database(username, name):
 
     table.put_item(
         Item={
-            'Name': name,
-            'Username': username
+            'username': username,
+            'name': name
         }
     )
     flash('User Added Successfully!', 'success')
@@ -81,7 +81,7 @@ def add_user_to_database(username, name):
 
 def delete_user_from_database(username):
     try:
-        response = table.get_item(Key={"Username": username})
+        response = table.get_item(Key={"username": username})
         item = response.get("Item")
         if not item:
             flash('Error Deleting User', 'warning')
@@ -91,7 +91,7 @@ def delete_user_from_database(username):
         return
 
     table.delete_item(
-        Key={'Username': username}
+        Key={'username': username}
     )
     flash('User deleted successfully', 'success')
 
@@ -99,7 +99,7 @@ def delete_user_from_database(username):
 def update_fav_lang(username, lang):
 
     try:
-        response = table.get_item(Key={"Username": username})
+        response = table.get_item(Key={"username": username})
         item = response.get("Item")
         if not item:
             flash('Error Updating User', 'warning')
@@ -109,7 +109,7 @@ def update_fav_lang(username, lang):
         return
 
     table.update_item(
-        Key={'Username': username},
+        Key={'username': username},
         UpdateExpression='SET fav_lang = :fav_lang',
     )
     flash('User Updated', 'success')
