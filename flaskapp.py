@@ -85,7 +85,7 @@ def read_user():
         top_country = get_top_country(username)
         fav_lang = get_fav_lang(username)
 
-        country_name = top_country.get('name')
+        country_name = top_country[0].get('name')
 
         return render_template('top_country.html', top_country = country_name, fav_lang=fav_lang)
 
