@@ -53,11 +53,11 @@ def get_top_country(username):
     query = ("""SELECT country.name, country.iso2_code, languages.iso2_code, languages.language, languages.num_pushers
                 FROM country
                 JOIN languages ON country.iso2_code = languages.iso2_code
-                WHERE languages.language = fav_lang 
+                WHERE languages.language = %s 
                 ORDER BY languages.num_pushers DESC 
                 LIMIT 1;""")
-    return execute_query(query)
-
+    return execute_query(query, (fav_lang,))
+# GitHub Copilot fixed the portion with the %s and the fav_lang argument
 
 def get_languages():
     """
