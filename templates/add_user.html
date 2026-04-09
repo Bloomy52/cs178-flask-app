@@ -2,16 +2,25 @@
 <html lang="en">
   <head>
     <title>Add New User</title>
+
+    <!-- Bootstrap CSS for styling the table -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Select2 CSS for Forms -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
   </head>
   <body>
-    <h1>Add New User</h1>
-    <form action="{{ url_for('add_user') }}" method="post">
-      <label for="first_name">First Name:</label><br />
-      <input type="text" id="first_name" name="first_name" required /><br />
-      <label for="last_name">Last Name:</label><br />
-      <input type="text" id="last_name" name="last_name" required /><br />
-      <label for="genre">Favorite Genre:</label><br />
-      <input type="text" id="genre" name="genre" required /><br />
+    <h1 class="mt-5">Add New User</h1>
+    <form method="post">
+      <div class="mb-3">
+        <label for="username" class="form-label">Username</label><br />
+        <input type="text" id="username" name="username" class="form-control" required /><br />
+      </div>
+      <div class="mb-3">
+        <label for="name" class="form-label">Name:</label><br />
+        <input id="name" type="text" name="name" class="form-control" required /><br />
+      </div>
+
       <input type="submit" value="Submit" />
     </form>
   </body>
