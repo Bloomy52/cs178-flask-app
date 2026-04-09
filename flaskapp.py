@@ -92,10 +92,6 @@ def display_html(rows):
     html += "</table>"
     return html
 
-@app.route('/index')
-def top_countries():
-    countries = get_list_of_top10python()
-    return render_template('index.html', results=countries)
 
 
 
