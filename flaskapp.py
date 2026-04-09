@@ -86,7 +86,7 @@ def read_user():
         return top_country
 
     else:
-        return render_template('find_country.html', top_country=top_country)
+        return render_template('find_country.html')
 
 
 def display_html(rows):
