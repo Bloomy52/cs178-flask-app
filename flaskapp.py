@@ -84,7 +84,10 @@ def read_user():
         username = request.form.get('username')
         top_country = get_top_country(username)
         fav_lang = get_fav_lang(username)
-        return render_template('top_country.html', top_country = top_country, fav_lang=fav_lang)
+
+        country_name = top_country.get('name')
+
+        return render_template('top_country.html', top_country = country_name, fav_lang=fav_lang)
 
     else:
         return render_template('find_country.html')
