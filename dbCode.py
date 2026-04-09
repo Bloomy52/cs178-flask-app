@@ -4,6 +4,12 @@
 
 import pymysql
 import creds
+import boto3
+
+dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
+table = dynamodb.Table('UserCodeLangs')
+
+
 
 def get_conn():
     """Returns a connection to the MySQL RDS instance."""
@@ -37,4 +43,13 @@ def get_list_of_top10python():
     return execute_query(query)
 
 
+def get_languages():
+    """
+    Selects and finds all the programming languages in the dataset.
+    displays during user creation
+    """
+    query = ("""SELECT DISTINCT language
+                FROM languages
+                ORDER BY language;""")
+    return execute_query(query)
 
