@@ -67,7 +67,8 @@ def update_user():
 
         return redirect(url_for('home'))
     else:
-        return render_template('update_user.html')
+        languages = [row['language'] for row in get_languages()]
+        return render_template('update_user.html', languages=languages)
 
 
 @app.route('/display-users')
