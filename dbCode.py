@@ -88,6 +88,14 @@ def get_fav_lang(username):
 
 
 def add_user_to_database(username, name):
+    """
+    Adds a user to the DynamoDB database with their username and name.
+    :param username:
+    :param name:
+    :return:
+    """
+
+
     try:
         response = table.get_item(Key={"username": username})
         item = response.get("Item")
@@ -108,6 +116,14 @@ def add_user_to_database(username, name):
 
 
 def delete_user_from_database(username):
+    """
+    Deletes a user from the DynamoDB database using their username.
+    :param username:
+    :return:
+    """
+
+
+
     try:
         response = table.get_item(Key={"username": username})
         item = response.get("Item")
@@ -125,6 +141,13 @@ def delete_user_from_database(username):
 
 
 def update_fav_lang(username, lang):
+
+    """
+    Updates the user's favorite language.
+    :param username:
+    :param lang:
+    :return:
+    """
 
     try:
         response = table.get_item(Key={"username": username})
