@@ -71,14 +71,6 @@ def update_user():
         return render_template('update_user.html', languages=languages)
 
 
-@app.route('/display-users')
-def display_users():
-    # Use DynamoDB to display users
-    response = table.scan()
-    users_list = response.get('Items', [])
-    return render_template('display_users.html', users = users_list)
-
-
 @app.route('/find-country', methods=['GET', 'POST'])
 def read_user():
     if request.method =='POST':
