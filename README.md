@@ -9,6 +9,7 @@
 ## Overview
 
 <!-- Describe your project in 2-4 sentences. What does it do? Who is it for? What problem does it solve? -->
+My project uses the GitHub Innovation Graph dataset to show the most popular programming language in each country. It also allows users to create a profile with their favorite programming language and then find the country with the most programmers that use that language. This project is for anyone who is interested in finfing out where their favorite programming language is most popular. It makes finding the country a lot easier since there is no find and replace and whatnot.
 
 ---
 
@@ -150,3 +151,5 @@ I used a second GitHub Copilot chat to help me with fixing an error with my SQL 
 (1) https://github.com/copilot/share/02410022-4a04-8cc1-b141-6e4ba03861d3
 (2) https://gemini.google.com/share/baf4bce160c4
 (3) https://github.com/copilot/share/c8004230-0b04-8445-b053-6e0b84f84982
+
+
