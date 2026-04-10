@@ -153,3 +153,8 @@ I used a second GitHub Copilot chat to help me with fixing an error with my SQL 
 (3) https://github.com/copilot/share/c8004230-0b04-8445-b053-6e0b84f84982
 
 
+---
+
+## Sources:
+- GitHub Innovation Graph dataset: https://github.com/github/innovationgraph
+- ISO2 Country Codes to Country Names dataset: https://datahub.io/core/country-list
